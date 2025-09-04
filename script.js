@@ -202,6 +202,6 @@ window.addEventListener('load', () => {
     // Add click event to button
     goToGameBtn.addEventListener('click', () => {
         // Add your game entry logic here
-         window.location.href = 'http://127.0.0.1:5500/auth/login.html';
+         window.location.href = 'auth/login.html'; // Example redirect
     });
 });

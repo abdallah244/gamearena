@@ -1,0 +1,375 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Arena - Games</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="games.css">
+    <link rel="iconf" type="iconf" href="https://copilot.microsoft.com/th/id/BCO.a7a28e5e-bb32-44cd-acb8-cd366010be0a.png">
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="fixed inset-0 flex items-center justify-center z-50 bg-gray-900">
+        <div class="text-center">
+            <!-- Weapon Animation -->
+            <div class="weapon-animation mb-8">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="w-40 h-40 mx-auto">
+                    <path d="M20,40 L80,40 L75,50 L80,60 L20,60 L25,50 Z" fill="#4ade80" opacity="0.8" />
+                    <rect x="45" y="30" width="10" height="30" fill="#4ade80" />
+                    <circle cx="50" cy="30" r="8" fill="#4ade80" />
+                    <path d="M50,22 L52,15 L48,15 Z" fill="#4ade80" />
+                </svg>
+            </div>
+            
+            <!-- Loading Bar -->
+            <div class="mb-6">
+                <div class="neon-border h-8 rounded-full overflow-hidden mx-auto relative" style="max-width: 500px;">
+                    <div id="loading-bar" class="loading-bar-inner h-full bg-gradient-to-r from-green-500 to-emerald-600 rounded-full" style="width: 0%"></div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <span id="loading-text" class="text-white font-bold text-sm">0%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Loading Message -->
+            <p id="loading-message" class="text-lg">Loading Games...</p>
+        </div>
+    </div>
+
+    <!-- Main Content (Initially Hidden) -->
+    <div id="main-content" class="hidden">
+        <!-- Navigation Bar -->
+        <nav class="fixed top-0 w-full bg-gray-900 bg-opacity-90 backdrop-blur-sm z-50 border-b border-green-500 border-opacity-30">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16">
+                    <!-- Logo -->
+                    <div class="flex-shrink-0 flex items-center">
+                        <div class="h-10 w-10 relative">
+                            <img src="https://copilot.microsoft.com/th/id/BCO.a7a28e5e-bb32-44cd-acb8-cd366010be0a.png" alt="Game Arena Logo" class="h-full w-full object-contain" />
+                        </div>
+                        <span class="ml-2 text-xl font-bold glow-text">GAME ARENA</span>
+                    </div>
+
+                    <!-- Navigation Links -->
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="/home/home.html" class="nav-link">Home</a>
+                            <a href="#" class="nav-link active">Games</a>
+                            <a onclick="alert('coming soon')" class="nav-link">Tournaments</a>
+                            <a onclick="alert('coming soon')" class="nav-link">Leaderboards</a>
+                            <a onclick="alert('coming soon')" class="nav-link">Community</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Games Section -->
+        <section class="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 glow-text">
+                    OUR GAMES COLLECTION
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Game 1: Memory Match -->
+                    <div class="game-card">
+                        <div class="game-image" style="background-image: url('https://copilot.microsoft.com/th/id/BCO.89fe58e2-cd82-4b54-8d92-ff450a3cd7b7.png');">
+                            <div class="game-overlay">
+                                <span class="game-category">Puzzle • Memory</span>
+                                <h3 class="game-title">MEMORY MATCH</h3>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-green-400 text-sm">4.2★ rating</span>
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 text-yellow-400 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </svg>
+                                    <span class="text-sm text-gray-400">4.2</span>
+                                </div>
+                            </div>
+                            <button class="play-btn w-full" onclick="openGameModal('memory')">Play Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Game 2: Snake Classic -->
+                    <div class="game-card">
+                        <div class="game-image" style="background-image: url('https://copilot.microsoft.com/th/id/BCO.9c06bb9b-5233-4da9-a108-d9b5eb60c9b1.png');">
+                            <div class="game-overlay">
+                                <span class="game-category">Arcade • Classic</span>
+                                <h3 class="game-title">SNAKE CLASSIC</h3>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-green-400 text-sm">4.5★ rating</span>
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 text-yellow-400 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </svg>
+                                    <span class="text-sm text-gray-400">4.5</span>
+                                </div>
+                            </div>
+                            <button class="play-btn w-full" onclick="openGameModal('snake')">Play Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Game 3: Tic Tac Toe -->
+                    <div class="game-card">
+                        <div class="game-image" style="background-image: url('https://copilot.microsoft.com/th/id/BCO.3af21fe0-a4e5-44b6-a62f-59e28b8e8207.png');">
+                            <div class="game-overlay">
+                                <span class="game-category">Strategy • 2 Players</span>
+                                <h3 class="game-title">TIC TAC TOE</h3>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-green-400 text-sm">4.0★ rating</span>
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 text-yellow-400 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </svg>
+                                    <span class="text-sm text-gray-400">4.0</span>
+                                </div>
+                            </div>
+                            <button class="play-btn w-full" onclick="openGameModal('tictactoe')">Play Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Game 4: Number Guesser -->
+                    <div class="game-card">
+                        <div class="game-image" style="background-image: url('https://tse4.mm.bing.net/th/id/OIP.V1FV93H0J_2-VTkg7PE-jAHaHa?r=0&cb=ucfimgc2&rs=1&pid=ImgDetMain&o=7&rm=3');">
+                            <div class="game-overlay">
+                                <span class="game-category">Puzzle • Numbers</span>
+                                <h3 class="game-title">NUMBER GUESSER</h3>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-green-400 text-sm">3.9★ rating</span>
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 text-yellow-400 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </svg>
+                                    <span class="text-sm text-gray-400">3.9</span>
+                                </div>
+                            </div>
+                            <button class="play-btn w-full" onclick="openGameModal('numberguess')">Play Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Game 5: Reaction Tester -->
+                    <div class="game-card">
+                        <div class="game-image" style="background-image: url('https://thvnext.bing.com/th/id/OIP.Cq6hfrJ4WsayFSHvSSkXnQAAAA?r=0&o=7&cb=ucfimgc2rm=3&rs=1&pid=ImgDetMain&o=7&rm=3');">
+                            <div class="game-overlay">
+                                <span class="game-category">Speed • Reflex</span>
+                                <h3 class="game-title">REACTION TESTER</h3>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-green-400 text-sm">4.3★ rating</span>
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 text-yellow-400 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </svg>
+                                    <span class="text-sm text-gray-400">4.3</span>
+                                </div>
+                            </div>
+                            <button class="play-btn w-full" onclick="openGameModal('reaction')">Play Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Game 6: Color Match -->
+                    <div class="game-card">
+                        <div class="game-image" style="background-image: url('https://tse4.mm.bing.net/th/id/OIP.n_iVadyl7D4DRqbmi3lFrAHaDt?r=0&cb=ucfimgc2&rs=1&pid=ImgDetMain&o=7&rm=3');">
+                            <div class="game-overlay">
+                                <span class="game-category">Puzzle • Colors</span>
+                                <h3 class="game-title">COLOR MATCH</h3>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-green-400 text-sm">4.1★ rating</span>
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 text-yellow-400 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </svg>
+                                    <span class="text-sm text-gray-400">4.1</span>
+                                </div>
+                            </div>
+                            <button class="play-btn w-full" onclick="openGameModal('colormatch')">Play Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Game 7: Word Scramble -->
+                    <div class="game-card">
+                        <div class="game-image" style="background-image: url('https://tse4.mm.bing.net/th/id/OIP.rz2nGV39AHmsysk9x21EKwHaEK?r=0&cb=ucfimgc2&rs=1&pid=ImgDetMain&o=7&rm=3');">
+                            <div class="game-overlay">
+                                <span class="game-category">Word • Puzzle</span>
+                                <h3 class="game-title">WORD SCRAMBLE</h3>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-green-400 text-sm">4.4★ rating</span>
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 text-yellow-400 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 极 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </svg>
+                                    <span class="text-sm text-gray-400">4.4</span>
+                                </div>
+                            </div>
+                            <button class="play-btn w-full" onclick="openGameModal('wordscramble')">Play Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Game 8: Math Challenge -->
+                    <div class="game-card">
+                        <div class="game-image" style="background-image: url('https://tse3.mm.bing.net/th/id/OIP.qyFVeWsfSJpwwXr3sZZFewHaHa?r=0&cb=ucfimgc2&rs=1&pid=ImgDetMain&o=7&rm=3');">
+                            <div class="game-overlay">
+                                <span class="game-category">Math • Education</span>
+                                <h3 class="game-title">MATH CHALLENGE</h3>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-green-400 text-sm">3.8★ rating</span>
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 text-yellow-400 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </svg>
+                                    <span class="text-sm text-gray-400">3.8</span>
+                                </div>
+                            </div>
+                            <button class="play-btn w-full" onclick="openGameModal('mathchallenge')">Play Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Game 9: Memory Cards -->
+                    <div class="game-card">
+                        <div class="game-image" style="background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/1400/6367c6150198703.635ad6d7012d9.jpg');">
+                            <div class="game-overlay">
+                                <span class="game-category">Memory • Cards</span>
+                                <h3 class="game-title">MEMORY CARDS</h3>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-green-400 text-sm">4.6★ rating</span>
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 text-yellow-400 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.极.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.极-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.极-3.292z" />
+                                    </svg>
+                                    <span class="text-sm text-gray-400">4.6</span>
+                                </div>
+                            </div>
+                            <button class="play-btn w-full" onclick="openGameModal('memorycards')">Play Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Game 10: Rock Paper Scissors -->
+                    <div class="game-card">
+                        <div class="game-image" style="background-image: url('https://img.freepik.com/premium-vector/hands-playing-rock-paper-scissors-game-flat-design-style-vector-illustration_540284-598.jpg?w=2000');">
+                            <div class="game-overlay">
+                                <span class="game-category">Classic • Fun</span>
+                                <h3 class="game-title">ROCK PAPER SCISSORS</h3>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-green-400 text-sm">4.7★ rating</span>
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 text-yellow-400 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </svg>
+                                    <span class="text-sm text-gray-400">4.7</span>
+                                </div>
+                            </div>
+                            <button class="play-btn w-full" onclick="openGameModal('rps')">Play Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Game Modal -->
+        <div id="game-modal" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 hidden">
+            <div class="bg-gray-800 rounded-lg w-11/12 md:w-3/4 lg:w-2/3 xl:w-1/2 max-w-4xl max-h-screen overflow-hidden">
+                <div class="flex justify-between items-center p-4 border-b border-gray-700">
+                    <h3 id="modal-title" class="text-xl font-bold">Game Title</h3>
+                    <button id="close-modal" class="text-gray-400 hover:text-white text-2xl">&times;</button>
+                </div>
+                <div id="game-container" class="p-4 max-h-[70vh] overflow-y-auto">
+                    <!-- Game content will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 py-12 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <!-- Logo and Description -->
+                    <div class="md:col-span-1">
+                        <div class="flex items-center mb-4">
+                            <div class="h-8 w-8 mr-2">
+                                <img src="https://copilot.microsoft.com/th/id/BCO.a7a28e5e-bb32-44cd-acb8-cd366010be0a.png" alt="Game Arena Logo" class="h-full w-full object-contain" />
+                            </div>
+                            <span class="text-xl font-bold glow-text">GAME ARENA</span>
+                        </div>
+                        <p class="text-gray-400 mb-4">
+                            The ultimate platform for competitive gaming. Join millions of players worldwide.
+                        </p>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                        <ul class="space-y-2">
+                            <li><a href="/home/home.html" class="footer-link">Home</a></li>
+                            <li><a href="#" class="footer-link">Games</a></li>
+                            <li><a onclick="alert('coming soon')" class="footer-link">Tournaments</a></li>
+                            <li><a onclick="alert('coming soon')" class="footer-link">Leaderboards</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Support -->
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Support</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="footer-link">Help Center</a></li>
+                            <li><a href="#" class="footer-link">FAQ</a></li>
+                            <li><a href="#" class="footer-link">Contact Us</a></li>
+                            <li><a href="#" class="footer-link">Status</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Legal -->
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Legal</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="footer-link">Terms of Service</a></li>
+                            <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                            <li><a href="#" class="footer-link">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                    <p>&copy; 2025 Game Arena. | Abdallah Hany | All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="games.js"></script>
+</body>
+</html>

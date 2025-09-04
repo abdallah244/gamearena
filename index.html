@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Arena </title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- Three.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="icon" href="https://copilot.microsoft.com/th/id/BCO.a7a28e5e-bb32-44cd-acb8-cd366010be0a.png">
+</head>
+<body class="bg-black text-white">
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="fixed inset-0 flex items-center justify-center z-50">
+        <div class="text-center w-full max-w-3xl px-4">
+            <!-- Weapon Animation -->
+            <div class="weapon-animation mb-8">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="w-40 h-40 mx-auto">
+                    <path d="M20,40 L80,40 L75,50 L80,60 L20,60 L25,50 Z" fill="#4ade80" opacity="0.8" />
+                    <rect x="45" y="30" width="10" height="30" fill="#4ade80" />
+                    <circle cx="50" cy="30" r="8" fill="#4ade80" />
+                    <path d="M50,22 L52,15 L48,15 Z" fill="#4ade80" />
+                </svg>
+            </div>
+            
+            <!-- Loading Bar -->
+            <div class="mb-6">
+                <div class="neon-border h-8 rounded-full overflow-hidden mx-auto relative" style="max-width: 500px;">
+                    <div id="loading-bar" class="loading-bar-inner h-full bg-gradient-to-r from-green-500 to-emerald-600 rounded-full" style="width: 0%"></div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <span id="loading-text" class="text-white font-bold text-sm">0%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Loading Message -->
+            <p id="loading-message" class="text-lg">Initializing game environment...</p>
+        </div>
+    </div>
+
+    <!-- Intro Screen -->
+    <div id="intro-screen" class="fixed inset-0 flex items-center justify-center z-40 opacity-0 pointer-events-none">
+        <div class="relative w-full h-full">
+            <!-- Canvas for 3D background -->
+            <canvas id="intro-canvas" class="absolute inset-0 w-full h-full"></canvas>
+            
+            <!-- Content -->
+            <div class="absolute inset-0 flex flex-col items-center justify-center">
+                <!-- Logo Container with enhanced animation -->
+                <div id="logo-container" class="w-64 h-64 mb-12 opacity-0 relative">
+                    <div id="logo-pulse" class="absolute inset-0 rounded-full opacity-0"></div>
+                    <img src="https://copilot.microsoft.com/th/id/BCO.a7a28e5e-bb32-44cd-acb8-cd366010be0a.png" alt="Game Arena Logo" class="w-full h-full object-contain logo-3d">
+                    <div id="logo-shine" class="absolute inset-0 overflow-hidden">
+                        <div class="shine-effect"></div>
+                    </div>
+                </div>
+                
+                <!-- Game title -->
+                <div id="game-title" class="flex space-x-4 mb-12 game-title">
+                    <!-- Letters will be added via JS -->
+                </div>
+                
+                <!-- Go to Game Button -->
+                <button id="go-to-game-btn" class="neon-border bg-black text-white text-xl px-8 py-3 rounded-full mt-6 opacity-0 transform transition-all duration-500 hover:bg-green-900 hover:scale-105">
+                    ENTER ARENA
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

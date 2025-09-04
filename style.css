@@ -1,0 +1,158 @@
+/* Custom styles for Game Arena */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    overflow: hidden;
+    background: #000;
+}
+
+.glow-text {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #4ade80, 0 0 40px #4ade80;
+}
+
+.neon-border {
+    box-shadow: 0 0 10px #4ade80, 0 0 20px #4ade80, inset 0 0 10px #4ade80;
+    border: 1px solid #4ade80;
+}
+
+.weapon-animation {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.loading-bar-inner {
+    transition: width 0.3s ease;
+}
+
+.letter {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* 3D Background */
+#intro-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* Intro screen styling */
+#intro-screen {
+    transition: opacity 1s ease;
+}
+
+/* Enhanced Logo Animation */
+.logo-3d {
+    transform-style: preserve-3d;
+    animation: logo-float 6s ease-in-out infinite;
+}
+
+@keyframes logo-float {
+    0%, 100% { 
+        transform: translateY(0) rotateX(5deg) rotateY(0) scale(1); 
+    }
+    25% { 
+        transform: translateY(-10px) rotateX(8deg) rotateY(5deg) scale(1.05); 
+    }
+    50% { 
+        transform: translateY(-5px) rotateX(5deg) rotateY(10deg) scale(1.03); 
+    }
+    75% { 
+        transform: translateY(-8px) rotateX(7deg) rotateY(5deg) scale(1.04); 
+    }
+}
+
+/* Logo pulse effect */
+@keyframes pulse {
+    0% { 
+        transform: scale(1);
+        opacity: 0.5;
+        box-shadow: 0 0 20px 10px rgba(74, 222, 128, 0.5);
+    }
+    50% { 
+        transform: scale(1.1);
+        opacity: 0.8;
+        box-shadow: 0 0 30px 15px rgba(74, 222, 128, 0.7);
+    }
+    100% { 
+        transform: scale(1);
+        opacity: 0.5;
+        box-shadow: 0 0 20px 10px rgba(74, 222, 128, 0.5);
+    }
+}
+
+/* Logo shine effect */
+.shine-effect {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.8) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(45deg);
+    animation: shine 4s infinite;
+}
+
+@keyframes shine {
+    0% { 
+        left: -100%; 
+        top: -100%;
+    }
+    20% { 
+        left: 100%; 
+        top: 100%;
+    }
+    100% { 
+        left: 100%; 
+        top: 100%;
+    }
+}
+
+/* Glow animation */
+@keyframes glow {
+    0%, 100% { 
+        filter: drop-shadow(0 0 5px rgba(74, 222, 128, 0.7));
+    }
+    50% { 
+        filter: drop-shadow(0 0 20px rgba(74, 222, 128, 0.9)) 
+               drop-shadow(0 0 30px rgba(74, 222, 128, 0.6));
+    }
+}
+
+/* Particle effect around logo */
+@keyframes particle-rotate {
+    from { transform: rotate(0deg) translateX(100px) rotate(0deg); }
+    to { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .weapon-animation svg {
+        width: 30vw;
+        height: 30vw;
+    }
+    
+    #logo-container {
+        width: 40vw;
+        height: 40vw;
+    }
+
+    .glow-text {
+        font-size: 4vw !important;
+    }
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Arena - Login</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="auth.css">
+    <link type="icon" rel="icon" href="https://copilot.microsoft.com/th/id/BCO.a7a28e5e-bb32-44cd-acb8-cd366010be0a.png">
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex items-center justify-center p-4">
+    <!-- Auth Container -->
+    <div class="w-full max-w-md bg-gray-800 bg-opacity-90 p-8 rounded-xl shadow-2xl border border-green-400 border-opacity-50">
+        <!-- Logo -->
+        <div class="text-center mb-8">
+            <div class="mx-auto h-20 w-20 relative mb-4">
+                <div class="logo-pulse absolute inset-0 rounded-full"></div>
+                <img src="https://copilot.microsoft.com/th/id/BCO.a7a28e5e-bb32-44cd-acb8-cd366010be0a.png" alt="Game Arena Logo" class="w-full h-full object-contain logo-3d">
+                <div class="logo-shine absolute inset-0 overflow-hidden">
+                    <div class="shine-effect"></div>
+                </div>
+            </div>
+            <h2 class="text-2xl font-bold glow-text mb-2">
+                Welcome to Game Arena
+            </h2>
+            <p class="text-sm text-gray-400">
+                Enter your credentials to access the ultimate gaming experience
+            </p>
+        </div>
+        
+        <!-- Login Form -->
+        <form class="space-y-6" id="login-form">
+            <div class="space-y-4">
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <svg class="h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                        </svg>
+                    </div>
+                    <input id="email" name="email" type="email" autocomplete="email" required class="form-input pl-10" placeholder="Email address" value="gamearena@gmail.com">
+                </div>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <svg class="h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <input id="password" name="password" type="password" autocomplete="current-password" required class="form-input pl-10" placeholder="Password">
+                </div>
+            </div>
+
+            <div class="flex items-center">
+                <input id="remember-me" name="remember-me" type="checkbox" class="form-checkbox">
+                <label for="remember-me" class="ml-2 block text-sm text-gray-300">
+                    Remember me
+                </label>
+            </div>
+
+            <div>
+                <button type="submit" class="w-full btn-primary">
+                    Sign in to Game Arena
+                </button>
+            </div>
+        </form>
+        
+        <!-- Demo Accounts -->
+        <div class="mt-8">
+            <div class="relative">
+                <div class="absolute inset-0 flex items-center">
+                    <div class="w-full border-t border-gray-700"></div>
+                </div>
+                <div class="relative flex justify-center text-sm">
+                    <span class="px-2 bg-gray-800 text-gray-400">
+                        Demo Accounts
+                    </span>
+                </div>
+            </div>
+
+            <div class="mt-4 grid grid-cols-2 gap-2">
+                <button type="button" class="demo-account-btn" data-email="player1@example.com" data-password="pass123">
+                    Player 1
+                </button>
+                <button type="button" class="demo-account-btn" data-email="gamer2023@example.com" data-password="game123">
+                    Gamer2023
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html>

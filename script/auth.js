@@ -66,9 +66,9 @@ function simulateLogin(email) {
         showNotification(`Welcome to Game Arena, ${email}!`, 'success');
         
         // Redirect to game after a delay
-        // setTimeout(() => {
-        //     window.location.href = '/home/home.html'; 
-        // }, 1500);
+        setTimeout(() => {
+            window.location.href = '/html/home.html'; 
+        }, 1500);
         
         // Restore button text after delay
         setTimeout(() => {

@@ -67,7 +67,7 @@ function simulateLogin(email) {
         
         // Redirect to game after a delay
         setTimeout(() => {
-            window.location.href = '../html/home.html'; 
+            window.location.href = './home.html'; 
         }, 1500);
         
         // Restore button text after delay
